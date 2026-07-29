@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using ChamaJussa.Domains;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChamaJussa.Contexts;
+
+public partial class JussaCallsContext : DbContext
+{
+    public JussaCallsContext()
+    {
+    }
+
+    public JussaCallsContext(DbContextOptions<JussaCallsContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<Fila> Fila { get; set; }
+
+    public virtual DbSet<Localizacao2> Localizacao2 { get; set; }
+
+    public virtual DbSet<OrdemServico> OrdemServico { get; set; }
+
+    public virtual DbSet<StatusItem> StatusItem { get; set; }
+
+    public virtual DbSet<Usuario> Usuario { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=JussaCalls;Trusted_Connection=True;TrustServerCertificate=True");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Fila>(entity =>
+        {
+            entity.HasKey(e => e.FilaID).HasName("PK__Fila__6E0F8A598BA22A4A");
+
+            entity.Property(e => e.NomeFila)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Localizacao2>(entity =>
+        {
+            entity.HasKey(e => e.LocalizacaoID).HasName("PK__Localiza__83ABDECAAACA0FF5");
+
+            entity.Property(e => e.LocalizacaoID).ValueGeneratedNever();
+            entity.Property(e => e.Andar).ValueGeneratedOnAdd();
+            entity.Property(e => e.Nome)
+                .HasMaxLength(25)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<OrdemServico>(entity =>
+        {
+            entity.HasKey(e => e.OS_ID).HasName("PK__OrdemSer__85A506ED1B21FDD4");
+
+            entity.Property(e => e.Descricao).HasMaxLength(255);
+            entity.Property(e => e.Imagem).HasMaxLength(32);
+            entity.Property(e => e.NomeItem)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.dataCriacao).HasPrecision(0);
+
+            entity.HasOne(d => d.Fila).WithMany(p => p.OrdemServico)
+                .HasForeignKey(d => d.FilaID)
+                .HasConstraintName("OS_FilaID_FK");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.OrdemServico)
+                .HasForeignKey(d => d.StatusID)
+                .HasConstraintName("OS_Status_FK");
+
+            entity.HasOne(d => d.usuarioSolicitanteNavigation).WithMany(p => p.OrdemServico)
+                .HasForeignKey(d => d.usuarioSolicitante)
+                .HasConstraintName("OS_usuarioSolicitante_FK");
+        });
+
+        modelBuilder.Entity<StatusItem>(entity =>
+        {
+            entity.HasKey(e => e.StatusID).HasName("PK__StatusIt__C8EE204349BB294F");
+
+            entity.Property(e => e.NomeStatus).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.HasKey(e => e.UsuarioID).HasName("PK__Usuario__2B3DE798EC857380");
+
+            entity.HasIndex(e => e.Email, "UQ__Usuario__A9D1053414D72613").IsUnique();
+
+            entity.HasIndex(e => e.NIF, "UQ__Usuario__C7DEC3300E7B993E").IsUnique();
+
+            entity.Property(e => e.UsuarioID).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.Email)
+                .HasMaxLength(60)
+                .IsUnicode(false);
+            entity.Property(e => e.NIF)
+                .HasMaxLength(11)
+                .IsUnicode(false);
+            entity.Property(e => e.Nome)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Senha).HasMaxLength(32);
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}
