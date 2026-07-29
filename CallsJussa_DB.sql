@@ -61,3 +61,21 @@ REFERENCES Localizacao2(LocalizacaoID) ON DELETE CASCADE
 )
 
 
+Use JussaCalls
+GO
+ALTER TABLE Usuario
+ADD StatusUsuario BIT DEFAULT 1 
+GO
+CREATE TRIGGER trg_Usuario_SoftDelete
+On Usuario
+INSTEAD OF Delete
+AS
+BEGIN
+	UPDATE usr
+	SET StatusUsuario = 0
+	FROM Usuario usr 
+	INNER JOIN deleted d 
+	ON d.UsuarioID = usr.UsuarioID
+
+	END
+ 
