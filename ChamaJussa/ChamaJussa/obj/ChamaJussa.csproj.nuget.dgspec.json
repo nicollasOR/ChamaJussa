@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\54930515831\\Documents\\Projeots\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj": {}
+    "C:\\Users\\54930515831\\Desktop\\ChamaJussa\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj": {}
   },
   "projects": {
-    "C:\\Users\\54930515831\\Documents\\Projeots\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj": {
+    "C:\\Users\\54930515831\\Desktop\\ChamaJussa\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\54930515831\\Documents\\Projeots\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj",
+        "projectUniqueName": "C:\\Users\\54930515831\\Desktop\\ChamaJussa\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj",
         "projectName": "ChamaJussa",
-        "projectPath": "C:\\Users\\54930515831\\Documents\\Projeots\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj",
+        "projectPath": "C:\\Users\\54930515831\\Desktop\\ChamaJussa\\ChamaJussa\\ChamaJussa\\ChamaJussa.csproj",
         "packagesPath": "C:\\Users\\54930515831\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\54930515831\\Documents\\Projeots\\ChamaJussa\\ChamaJussa\\obj\\",
+        "outputPath": "C:\\Users\\54930515831\\Desktop\\ChamaJussa\\ChamaJussa\\ChamaJussa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.10, )"

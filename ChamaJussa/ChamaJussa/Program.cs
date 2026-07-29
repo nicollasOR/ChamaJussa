@@ -11,8 +11,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    
-    //app.MapOpenApi();
+
+    //app.MapOpenApi(); Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=JussaCalls;Trusted_Connection=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -UseDatabaseNames -NoPluralize
 
 }
 
