@@ -1,0 +1,60 @@
+using ChamaJussa_API.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ChamaJussa_API.Domains;
+using DotNetEnv;
+
+namespace ChamaJussa_API.Applications.Auth;
+
+public class GerarJWT
+{
+    private string chave2 = Environment.GetEnvironmentVariable("JWT_KEY");
+    private readonly IConfiguration _config;
+
+    public GerarJWT(IConfiguration config)
+    {
+        _config = config;
+    }
+
+    public string GerarToken(Usuario usuario)
+    {
+        // var chave = _config["Jwt:Key"]!;
+        var chave = chave2!;
+        
+        var issuer = _config["Jwt:Issuer"]!;
+        var audience = _config["Jwt:Audience"]!;
+        var expiraEmMinutos = int.Parse(_config["Jwt:ExpiraEmMinutos"]!);
+
+        var keyBytes = Encoding.UTF8.GetBytes(chave);
+
+        if (keyBytes.Length < 32)
+        {
+            throw new DomainException("Jwt: Key precisa ter pelo menos 32 caracteres (256 bits).");
+        }
+
+        var securityKey = new SymmetricSecurityKey(keyBytes);
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioID.ToString()),
+            new Claim(ClaimTypes.Name, usuario.Nome),
+            new Claim(ClaimTypes.Email, usuario.Email)
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: issuer,
+            audience: audience,
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(expiraEmMinutos),
+            signingCredentials: credentials
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+}
