@@ -1,6 +1,0 @@
-@ChamaJussa_HostAddress = http://localhost:5010
-
-GET {{ChamaJussa_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
