@@ -10,16 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-// 1. Carregar Variáveis de Ambiente (.env)
 Env.Load();
 var builder = WebApplication.CreateBuilder(args);
 
-// Garante que pega do .env ou tenta pegar do appsettings.json como fallback
-string conexao = Environment.GetEnvironmentVariable("CONNECTION_STRING") 
-    ?? builder.Configuration.GetConnectionString("DefaultConnection") 
-    ?? throw new InvalidOperationException("A Connection String não foi configurada.");
+string conexao = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+    //?? builder.Configuration.GetConnectionString("DefaultConnection");
 
-// 2. Controllers e CORS
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -32,7 +29,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-// 3. Documentação Swagger com Autenticação JWT
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -62,10 +58,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// 4. Banco de Dados (DbContext)
 builder.Services.AddDbContext<JussaCalls2Context>(opt => opt.UseSqlServer(conexao));
 
-// 5. Injeção de Dependências (Repositórios e Serviços)
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IOSRepository, OSRepository>();
 builder.Services.AddScoped<IStorageRepository, localStorageService>();
@@ -75,7 +69,6 @@ builder.Services.AddScoped<OS_Service>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<GerarJWT>();
 
-// 6. Configuração de Autenticação JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -99,9 +92,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// -------------------------------------------------------------
-// PIPELINE DE REQUISIÇÕES (A ORDEM AQUI É CRÍTICA)
-// -------------------------------------------------------------
 
 if (app.Environment.IsDevelopment())
 {
@@ -114,7 +104,7 @@ app.UseStaticFiles();
 
 app.UseCors("CorsPolicy");
 
-// ATENÇÃO: Autenticação SEMPRE ANTES da Autorização
+// Autenticacao SEMPRE ANTES da Autorizacao
 app.UseAuthentication(); 
 app.UseAuthorization();
 

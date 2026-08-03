@@ -24,7 +24,7 @@ public class GerarJWT
     public string GerarToken(Usuario usuario)
     {
         // var chave = _config["Jwt:Key"]!;
-        var chave = chave2!;
+        var chave = chave2;
         
         var issuer = _config["Jwt:Issuer"]!;
         var audience = _config["Jwt:Audience"]!;
