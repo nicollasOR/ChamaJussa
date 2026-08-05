@@ -15,8 +15,8 @@ export const Perfil = () => {
                 <Text style={styles.subTitulo}> kessia@email.com </Text>
             </View>
 
-            <TouchableHighlight style={styles.subTitulo}>
-                <Text>Sair da conta</Text>
+            <TouchableHighlight style={styles.botao}>
+                <Text style={styles.botao_text}>Sair da conta</Text>
             </TouchableHighlight>
 
 
@@ -30,32 +30,52 @@ const styles = StyleSheet.create({
         paddingVertical: 25,
         // paddingHorizontal: ,
         width: `100%`,
-        height: `70%`,
+        height: `100%`,
         alignItems: `center`,
         // justifyContent: `center`
         // backgroundColor: `black`,
-        gap: 25
+        gap: 50,
+        backgroundColor: '#F3F4F6'
     },
 
     sideText: {
         alignSelf: "flex-start",
         fontSize: 24,
-        fontWeight: "700"
+        fontWeight: "700",
+        marginLeft: 10
     },
 
     card: {
-        width: "80%",
-        height: "70%",
+        width: "90%",
+        height: "60%",
         alignItems: "center",
-        justifyContent : "center"
+        justifyContent : "center",
+        backgroundColor: `white`,
+        flexDirection: `column`,
+        gap: 20
     },
 
     titulo: {
+        fontSize: 22,
+        textAlign: `center`
 
     },
 
     subTitulo: {
+    },
 
+    botao: {
+        width: `80%`,
+        alignItems: "center",
+        backgroundColor: `#EF4444`,
+        height: `5%`,
+        borderRadius: `5px`,
+        justifyContent: "center"
+    },
+
+
+    botao_text: {
+        fontSize: 18
     }
 
 
