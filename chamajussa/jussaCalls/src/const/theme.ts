@@ -11,5 +11,14 @@ import { StyleSheet } from 'react-native'
 const styles2 = StyleSheet.create({
   teste: {
     alignItems: `center`
-  }
+  },
+
+  titulo: {
+    fontFamily: ``
+  },
+  subTitulo: {
+    fontFamily: ``
+  },
+
+
 })
