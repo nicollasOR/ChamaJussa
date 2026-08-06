@@ -18,7 +18,7 @@ export const Login = () => {
         </View>
         <View style={styles.inserirDados}>
           <Text style={styles.label}>Senha</Text>
-          <TextInput style={styles.input} placeholder='ola'></TextInput>
+          <TextInput style={styles.input} placeholder='ola' secureTextEntry></TextInput>
         </View>
 
         <TouchableHighlight style={styles.botao}><Text style={styles.botao_texto}>Acessar o sistema</Text></TouchableHighlight>
