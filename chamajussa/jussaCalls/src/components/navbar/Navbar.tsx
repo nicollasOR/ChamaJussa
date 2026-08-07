@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     },
 
     botao_nav: {
-
-    }
+        
+    }   
 })
 
 

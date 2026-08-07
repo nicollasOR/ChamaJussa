@@ -7,6 +7,9 @@ import { stylesFont } from '../../const/fonts'
 // import { TextInput } from 'react-native/types_generated/index'
 
 export const Criar = () => {
+
+
+    
   return (
     // <div>Criar</div>
     <View style={styles.body}>
@@ -14,7 +17,8 @@ export const Criar = () => {
         <View style={styles.main}>
             <View style={styles.campoInput}>
                 <Text style={styles.campoInput_Titulo}>Titulo do problema *</Text>
-                <TextInput style={styles.campoInput_Input} placeholder='Ex: vazamento da pia'/> {/*</View></View></TextInput>*/}
+                <TextInput style={styles.campoInput_Input} 
+                placeholder='Ex: vazamento da pia'/> {/*</View></View></TextInput>*/}
             </View>
             <View style={styles.campoInput}>
                 <Text style={styles.campoInput_Titulo}>Máquina / Equipamento *</Text>
@@ -24,7 +28,7 @@ export const Criar = () => {
                 <Text style={styles.campoInput_Titulo}>Local / Setor *</Text>
                 <TextInput style={[styles.campoInput_Input, styles.descricao]} 
                 // numberOfLines={5}
-                 placeholder='Ex: vazamento da pia'/> {/*</View></View></TextInput>*/}
+                placeholder='Ex: vazamento da pia'/> {/*</View></View></TextInput>*/}
             </View>
             <View style={styles.campoInput}>
                 <Text style={styles.campoInput_Titulo}>Descrição do problema *</Text>

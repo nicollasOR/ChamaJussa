@@ -1,9 +1,19 @@
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableHighlight, View, TextInput, Image } from 'react-native';
 
-export const Login = () => {
-  return (
+import { useRouter } from "expo-router"
 
+export default function Login() {
+  const router = useRouter();
+
+  function acessoLogin() {
+
+    // router.navigate("/listaOOS") // redireciona para a seguinte tela
+    router.push("/listaOOS")  // mantem na tela anterior(login) enquanto adiciona a listaOOS
+    router.replace("/listaOOS") // substitui a login(pag atual) pela nova(listaOOS)
+
+  }
+  return (
     <View style={styles.loginSection}>
       <Image source={require('../../../assets/svg/jussaLogo.svg')} />
 
@@ -13,15 +23,15 @@ export const Login = () => {
         <View style={styles.inserirDados}>
           <Text style={styles.label}>Email</Text>
           <TextInput
-          
-          style={styles.input} placeholder='ola'></TextInput>
+
+            style={styles.input} placeholder='ola'></TextInput>
         </View>
         <View style={styles.inserirDados}>
           <Text style={styles.label}>Senha</Text>
           <TextInput style={styles.input} placeholder='ola' secureTextEntry></TextInput>
         </View>
 
-        <TouchableHighlight style={styles.botao}><Text style={styles.botao_texto}>Acessar o sistema</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.botao}><Text style={styles.botao_texto} onPress={acessoLogin}>Acessar o sistema</Text></TouchableHighlight>
       </View>
     </View>
   )
@@ -75,26 +85,28 @@ const styles = StyleSheet.create({
   input: {
     height: '60%',
     borderRadius: '5px',
+    paddingLeft: 5,
     backgroundColor: '#F3F4F6',
     borderColor: 'transparent'
 
   },
 
-  botao:{
+  botao: {
     marginTop: 10,
     width: '70%',
     backgroundColor: '#10B981',
     height: '15%',
+    // paddingLeft: 10,
     borderRadius: '8px',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
-  botao_texto : {
+  botao_texto: {
     fontSize: 17,
     color: 'white',
     fontWeight: '600'
-    
+
   }
 
 

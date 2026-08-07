@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, TextStyle, ImageComponent, StyleSheet, Text, TouchableHighlight, View, TextInput,  } from 'react-native';
-import { Login } from './src/pages/login/login';
-import { Perfil } from './src/pages/perfil/Perfil';
-import { Notificacoes } from './src/pages/notificacoes/Notificacoes';
+import { Login } from './src/app/login/login';
+import { Perfil } from './src/app/perfil/Perfil';
+import { Notificacoes } from './src/app/notificacoes/Notificacoes';
 // import { Criar } from './src/pages/api/criarOS/Criar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Criar } from './src/pages/criarOS/Criar';
+import { Criar } from './src/app/criarOS/Criar';
+import { DetalheOS } from './src/app/detalheOS/detalheOS';
 
 
 
@@ -23,12 +24,13 @@ export default function App() {
       {/* <Login/> */}
       {/* </SafeAreaView> */}
       {/* </SafeAreaProvider> */}
-      <Criar />
+      {/* <Criar /> */}
+      <DetalheOS/>
     </>
 
   )
 }
-
+// DetalheOS
 const styles = StyleSheet.create({
   safeareaview: {
     // flex: 1,
