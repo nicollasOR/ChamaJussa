@@ -63,6 +63,8 @@ builder.Services.AddDbContext<JussaCalls2Context>(opt => opt.UseSqlServer(conexa
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IOSRepository, OSRepository>();
 builder.Services.AddScoped<IStorageRepository, localStorageService>();
+builder.Services.AddScoped<ILocalRepository, LocalRepository>();
+
 
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<OS_Service>();
