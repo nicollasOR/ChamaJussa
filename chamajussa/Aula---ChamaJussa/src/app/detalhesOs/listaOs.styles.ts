@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+export const styles2 = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#F4F5F7',
@@ -109,3 +109,126 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
+
+
+export const styles = StyleSheet.create({
+  body: {
+        width: `100%`,
+        height: `100%`,
+        alignItems: `center`,
+        // paddingVertical: 10,
+        // paddingHorizontal: 10,
+        backgroundColor: `#F3F4F6`,
+        gap: 10
+    },
+
+    titulo: {
+        fontSize: 22,
+
+    },
+    card: {
+        backgroundColor: `white`,
+        width: `80%`,
+        height: `80%`,
+        paddingVertical: 5,
+        paddingHorizontal: 22,
+        gap: 15
+        // fontSize: 20,
+    },
+    card_titulo: {
+        gap: 10
+    },
+
+    subTitulo: {
+        fontSize: 18,
+    },
+
+    lined_card: {
+        flexDirection: "row",
+        justifyContent: "space-around"
+    },
+
+    lined: {
+        fontSize: 16,
+        color: `#757575`
+
+    },
+
+    card_info:
+    {
+        // width: 30\
+        flexDirection: `row`,
+        // justifyContent: `space-between`,
+        alignItems: `center`,
+        paddingHorizontal: 4,
+        // marginTop: 1,
+        gap: 10
+    },
+
+    card_infoImg: {
+        flex: 1,
+        width: 20,
+        backgroundColor: '#0553',
+    },
+
+    card_infoTextos: {
+        gap: 3
+    },
+
+    card_infoTitulo: {
+        color: `#757575`,
+        fontSize: 17.5
+    },
+
+    card_infoSubtitulo: {
+
+        fontSize: 17.5
+    },
+
+
+    linha_divisoria:
+    {
+        width: "100%",
+        height: 2,
+        backgroundColor: `#757575`,
+        borderRadius: 2,
+        alignSelf: `center`,
+        marginTop: 2
+    },
+
+    card_descricao:
+    {
+        gap: 4
+    },
+
+    card_descricaoTitulo: {
+        fontSize: 20
+    },
+
+    card_descricaoTexto: {
+        fontSize: 16
+    },
+
+
+    card_imagem: {
+
+    },
+
+    card_imagemTitulo: {
+        fontSize: 20
+    },
+
+    card_imagemFoto:
+    {
+
+    },
+
+    botao: {
+
+    },
+
+    botaoTexto: {
+
+    }
+
+})

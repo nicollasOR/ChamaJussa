@@ -44,6 +44,28 @@ export function useDetalheOS(id: string) {
     }
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const getImagemUrl = (img?: string) => {
     if (!img) return null;
     if (img.startsWith("http") || img.startsWith("data:")) return img;

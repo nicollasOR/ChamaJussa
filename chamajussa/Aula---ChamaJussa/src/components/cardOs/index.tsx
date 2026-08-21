@@ -12,6 +12,8 @@ interface OrdemDeServico{
 export default function CardOs({numOs, status, titulo, descricao} : OrdemDeServico) {
     const router = useRouter();
 
+    const identificador = `OS-${String(numOs).padStart(3, '0')}`
+
     function direcionarOS(){
         router.push("/detalhesOs/"+ numOs)
     }
@@ -25,7 +27,7 @@ export default function CardOs({numOs, status, titulo, descricao} : OrdemDeServi
             ]}
         >
             <View style={styles.cardTopo}>
-                <Text style={styles.numero}>{numOs}</Text>
+                <Text style={styles.numero}>{identificador}</Text>
 
                 <View style={styles.statusContainer}>
                     <Text style={styles.status}>{status}</Text>

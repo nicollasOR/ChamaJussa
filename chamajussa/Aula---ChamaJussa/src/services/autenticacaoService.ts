@@ -7,11 +7,17 @@ export const autenticacaoService = {
     // }
     async login(dados : Login) : Promise<LoginResponse>{
         //com essas {} ele muda o tipo da "data" para LoginResponse
-        const {data} = await api.post<LoginResponse>("Autenticacao/login", dados);
+        const {data} = await api.post<LoginResponse>("Auth/login", dados);
         if(data.token){
             //token -> "localstorage" (só que no react native)
             await AsyncStorage.setItem(process.env.EXPO_PUBLIC_TOKEN_KEY, data.token)
         }
         return data;
+    },
+
+    async logout()
+    {
+        const data = await AsyncStorage.removeItem(process.env.EXPO_PUBLIC_TOKEN_KEY)
+        return data
     }
 }

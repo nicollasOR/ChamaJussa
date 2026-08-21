@@ -1,7 +1,102 @@
+import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Navbar } from '../../components/navbar/Navbar'
+// import { } from "expo-image"
+import { Wrench } from 'lucide-react-native'
+import { styles } from "./listaOs.styles"
+
+import { Entypo, Feather, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDetalheOS } from '../../hooks/useDetalheOs';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+
+
+export const DetalheOS = () => {
+
+    // const {id} = useLocalSearchParams<(id: string)>()
+
+
+
+    return (
+        // <div>ListaOS</div>x=
+
+        <>
+            <View style={styles.body}>
+                <Text style={styles.titulo}>Detalhes da OS 0008-SO {/* colocar o numero ne*/}</Text>
+
+                <View style={styles.card}>
+                    <View style={styles.card_titulo}>
+                        <Text style={styles.subTitulo}>Vazamento Hidraulico</Text>
+                        <View style={styles.lined_card}>
+                            <Text style={styles.lined}>Criada em 17/06/2026</Text>
+                            <Text style={styles.lined}>11:29:58</Text>
+
+                        </View>
+                    </View>
+                    <View style={styles.card_info}>
+                        <Wrench />
+                        <View style={styles.card_infoTextos}>
+                            <Text style={styles.card_infoTitulo}>Máquina / Equipamento</Text>
+                            <Text style={styles.card_infoSubtitulo}>Tubulação/Sifão da Pia</Text>
+                        </View>
+                    </View>
+                    <View style={styles.card_info}>
+                        <Wrench />
+                        <View style={styles.card_infoTextos}>
+                            <Text style={styles.card_infoTitulo}>Local / Setor</Text>
+                            <Text style={styles.card_infoSubtitulo}>Banheiro Masculino</Text>
+                        </View>
+                    </View>
+                    <View style={styles.card_info}>
+                        <Wrench />
+                        <View style={styles.card_infoTextos}>
+                            <Text style={styles.card_infoTitulo}>Solicitante</Text>
+                            <Text style={styles.card_infoSubtitulo}>Kessia Milena</Text>
+                        </View>
+                    </View>
+                    <View style={styles.linha_divisoria} />
+                    <View style={styles.card_descricao}>
+                        <Text style={styles.card_descricaoTitulo}>Descrição do Problema</Text>
+                        <Text style={styles.card_descricaoTexto}>Há um vazamento constante de água por baixo da pia do banheiro masculino do segundo andar do Bloco B. Está alagando o chão e causando risco de queda.</Text>
+                    </View>
+                    <View style={styles.card_imagem}>
+                        <Text style={styles.card_imagemTitulo}>Foto do problema</Text>
+                    </View>
+
+                </View>
+
+                <TouchableOpacity style={styles.botao}><Text style={styles.botaoTexto}>Editar Solicitação</Text></TouchableOpacity>
+                <Navbar />
+            </View>
+
+        </>
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { styles } from './listaOs.styles';
 // import React from 'react';
 // import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 // import { Entypo, Feather, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-// import { styles } from './listaOs.styles';
 // import { SafeAreaView } from 'react-native-safe-area-context';
 // import { useDetalheOS } from '../../hooks/useDetalheOs';
 // import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -37,7 +132,7 @@
 //         );
 //     }
 
-//     if (error || !ordem) {
+//     if (error || !os) {
 //         return (
 //             <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
 //                 <View style={styles.headerRow}>
@@ -47,7 +142,7 @@
 //                     <Text style={styles.headerTitle}>Detalhes da OS</Text>
 //                 </View>
 //                 <View style={styles.centerContainer}>
-//                     <Text style={styles.errorText}>{error || 'Ordem de serviço não encontrada.'}</Text>
+//                     <Text style={styles.errorText}>{error || 'os de serviço não encontrada.'}</Text>
 //                     <TouchableOpacity style={[styles.button, { marginTop: 12 }]} onPress={carregarDetalhes} activeOpacity={0.7}>
 //                         <Text style={styles.buttonText}>Tentar novamente</Text>
 //                     </TouchableOpacity>
@@ -68,15 +163,15 @@
 //             <View style={styles.card}>
 //                 <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
 //                     <View style={styles.titleRow}>
-//                         <Text style={styles.title}>{ordem.nomeItem}</Text>
-//                         {ordem.statusNome ? (
+//                         <Text style={styles.title}>{os.nomeItem}</Text>
+//                         {os.statusNome ? (
 //                             <View style={styles.statusBadge}>
-//                                 <Text style={styles.statusText}>{ordem.statusNome}</Text>
+//                                 <Text style={styles.statusText}>{os.statusNome}</Text>
 //                             </View>
 //                         ) : null}
 //                     </View>
 
-//                     {ordem.dtCriacao ? (
+//                     {os.dtCriacao ? (
 //                         <Text style={styles.date}>Criada em {dataCriacaoFormatada}</Text>
 //                     ) : null}
 
@@ -84,7 +179,7 @@
 //                         <Entypo name="tools" size={24} color="#0878F9" style={styles.icon} />
 //                         <View>
 //                             <Text style={styles.label}>Máquina / Equipamento</Text>
-//                             <Text style={styles.value}>{ordem.nomeItem || 'Não informado'}</Text>
+//                             <Text style={styles.value}>{os.nomeItem || 'Não informado'}</Text>
 //                         </View>
 //                     </View>
 
@@ -92,7 +187,7 @@
 //                         <Ionicons name="location-outline" size={22} color="#FF3B30" style={styles.icon} />
 //                         <View>
 //                             <Text style={styles.label}>Local / Setor</Text>
-//                             <Text style={styles.value}>{ordem.localizacaoNome || 'Não informado'}</Text>
+//                             <Text style={styles.value}>{os.localizacaoNome || 'Não informado'}</Text>
 //                         </View>
 //                     </View>
 
@@ -100,7 +195,7 @@
 //                         <Feather name="user" size={20} color="#34C759" style={styles.icon} />
 //                         <View>
 //                             <Text style={styles.label}>Solicitante</Text>
-//                             <Text style={styles.value}>{ordem.solicitanteNome || 'Não informado'}</Text>
+//                             <Text style={styles.value}>{os.solicitanteNome || 'Não informado'}</Text>
 //                         </View>
 //                     </View>
 
@@ -108,7 +203,7 @@
 
 //                     <Text style={styles.sectionTitle}>Descrição do Problema</Text>
 //                     <Text style={styles.descriptionText}>
-//                         {ordem.descricao || 'Sem descrição informada.'}
+//                         {os.descricao || 'Sem descrição informada.'}
 //                     </Text>
 
 //                     <Text style={styles.sectionTitle}>Foto do Problema</Text>
@@ -129,3 +224,6 @@
 //         </SafeAreaView>
 //     );
 // }
+
+
+

@@ -44,14 +44,14 @@ export const DetalheOS = () => {
                             <Text style={styles.card_infoSubtitulo}>Kessia Milena</Text>
                         </View>
                     </View>
-                        <View style={styles.linha_divisoria}/>
-                        <View style={styles.card_descricao}>
-                            <Text style={styles.card_descricaoTitulo}>Descrição do Problema</Text>
-                            <Text style={styles.card_descricaoTexto}>Há um vazamento constante de água por baixo da pia do banheiro masculino do segundo andar do Bloco B. Está alagando o chão e causando risco de queda.</Text>
-                        </View>
-                        <View style={styles.card_imagem}>
-                            <Text style={styles.card_imagemTitulo}>Foto do problema</Text>
-                        </View>
+                    <View style={styles.linha_divisoria} />
+                    <View style={styles.card_descricao}>
+                        <Text style={styles.card_descricaoTitulo}>Descrição do Problema</Text>
+                        <Text style={styles.card_descricaoTexto}>Há um vazamento constante de água por baixo da pia do banheiro masculino do segundo andar do Bloco B. Está alagando o chão e causando risco de queda.</Text>
+                    </View>
+                    <View style={styles.card_imagem}>
+                        <Text style={styles.card_imagemTitulo}>Foto do problema</Text>
+                    </View>
 
                 </View>
 
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 
 
     linha_divisoria:
-    {   
+    {
         width: "100%",
         height: 2,
         backgroundColor: `#757575`,

@@ -1,13 +1,30 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, TouchableOpacityProps } from "react-native";
 import { styles } from "./perfil.styles"
+import { useLocalSearchParams } from "expo-router";
+import { autenticacaoService } from "../../../services/autenticacaoService";
+import { Usuario } from "../../../@types/usuario";
+type usuarioInterface = {
+  ...Usuario
+}
+  interface meuBotao extends TouchableOpacityProps{
+    children: React.ReactNode
+  }
+
+  function botaoLogout({children }: meuBotao)
+  {
+    <TouchableOpacity></TouchableOpacity>
+  }
 
 export default function Perfil() {
+  const {id} = useLocalSearchParams<{id: string}>()
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         {/* Título Principal */}
         <Text style={styles.headerTitle}>Perfil</Text>
+        <TouchableOpacity onPress={autenticacaoService.logout}>Logout</TouchableOpacity>
 
         {/* Card de Informações do Usuário */}
         <View style={styles.card}>
