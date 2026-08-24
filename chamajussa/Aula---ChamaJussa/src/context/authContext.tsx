@@ -21,24 +21,24 @@ interface authProvider {
     children: ReactNode
 }
 
-const AuthContext = createContext<authContextData>({} as authContextData)
+// const AuthContext = createContext<authContextData>({} as authContextData)
 
-export const authProvider : React.FC<authProvider> = ({ children }) => {
+// export const authProvider : React.FC<authProvider> = ({ children }) => {
 
-    const[usuario, setUsuario] = useState<usuarioJwt>()
-    const[loading, setLoading] = useState<boolean>(true)
+//     const[usuario, setUsuario] = useState<usuarioJwt>()
+//     const[loading, setLoading] = useState<boolean>(true)
 
 
-    const parseToken = async ()
+//     const parseToken = async ()
 
 
 
     
     
 
-  return (
+//   return (
     
-  )
-}
+//   )
+// }
 
-export const authAuth = () => useContext(authProvider)
+// export const authAuth = () => useContext(authProvider)

@@ -4,9 +4,9 @@ import { styles } from "./perfil.styles"
 import { useLocalSearchParams } from "expo-router";
 import { autenticacaoService } from "../../../services/autenticacaoService";
 import { Usuario } from "../../../@types/usuario";
-type usuarioInterface = {
-  ...Usuario
-}
+// type usuarioInterface = {
+//   ...Usuario
+// }
   interface meuBotao extends TouchableOpacityProps{
     children: React.ReactNode
   }

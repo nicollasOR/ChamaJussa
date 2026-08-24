@@ -36,6 +36,7 @@ export default function Login() {
       router.replace("/listaOs")
     } catch (error) {
       Alert.alert("Erro!🚫❌", "E-mail ou senha inválidos");
+      console.log(`deu erro chefia`)
     }
 
   }

@@ -11,7 +11,7 @@ const enderecoTeste = "http://localhost:5297/api/"
 const enderecoTesteS = `https://localhost:7253/api/`
 
 export const api = axios.create({
-    baseURL: enderecoTesteS ,
+    baseURL: enderecoTeste,
     timeout: 10000
 });
 

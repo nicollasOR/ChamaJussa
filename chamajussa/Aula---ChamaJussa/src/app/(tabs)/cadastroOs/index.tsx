@@ -4,17 +4,30 @@ import { styles } from "./cadastroOs.styles";
 import { Feather } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
+import { listarLocalizacao } from "../../../hooks/useLocalizacao";
+import { ImagemUpload } from "../../../@types";
+import { useOrdemServico } from "../../../hooks/useOrdemServico";
 
-const LOCAIS_SETORES = [
-  { id: "1", nome: "Banheiro Masculino - Bloco B - 2º Andar" },
-  { id: "2", nome: "Banheiro Feminino - Bloco B - 2º Andar" },
-  { id: "3", nome: "Cozinha / Refeitório - Térreo" },
-  { id: "4", nome: "Almoxarifado Central" },
-  { id: "5", nome: "Laboratório de Informática - Bloco A" },
-];
+// const LOCAIS_SETORES = [
+//   { id: "1", nome: "Banheiro Masculino - Bloco B - 2º Andar" },
+//   { id: "2", nome: "Banheiro Feminino - Bloco B - 2º Andar" },
+//   { id: "3", nome: "Cozinha / Refeitório - Térreo" },
+//   { id: "4", nome: "Almoxarifado Central" },
+//   { id: "5", nome: "Laboratório de Informática - Bloco A" },
+// ];
 
 export default function CadastroOs() {
   const [localSelecionado, setLocalSelecionado] = useState<string>("");
+  // const [localSelecionado, setLocalSelecionado] = useState<localizacaoType[]>([]);
+  const cadOs = useOrdemServico()
+  const locais = listarLocalizacao()
+  const [nomeItem, setNomeItem] = useState<string>("")
+  const [descricao, setDescricao] = useState("")
+  const [img, setImg] = useState<ImagemUpload | null>(null)
+
+
+  // async function
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Título Principal */}
@@ -31,17 +44,20 @@ export default function CadastroOs() {
               style={styles.input}
               placeholder="Ex: Vazamento da pia"
               placeholderTextColor="#A0A0A0"
+              onChangeText={(nome) => setOs}
+              value={nomeItem}
             />
           </View>
 
-          <View style={styles.inputGroup}>
+          {/* <View style={styles.inputGroup}>
             <Text style={styles.inputLabel}>Máquina / Equipamento *</Text>
             <TextInput
               style={styles.input}
               placeholder="Ex: Tubulação/Sifão da Pia"
               placeholderTextColor="#A0A0A0"
+
             />
-          </View>
+          </View> */}
           <View style={styles.inputGroup}>
             <Text style={styles.inputLabel}>Local / Setor *</Text>
             <View style={styles.pickerContainer}>
@@ -51,22 +67,19 @@ export default function CadastroOs() {
                 onValueChange={(itemValue) => setLocalSelecionado(itemValue)}
                 dropdownIconColor="#666"
                 style={styles.picker}
+
               >
-                <Picker.Item
-                  label="Selecione o local/setor..."
-                  value=""
-                  color="#A0A0A0"
-                />
-                <Picker.Item
-                  label="Banheiro Masculino - Bloco B"
-                  value="banheiro_masc_b"
-                />
-                <Picker.Item
-                  label="Banheiro Feminino - Bloco B"
-                  value="banheiro_fem_b"
-                />
-                <Picker.Item label="Cozinha - Térreo" value="cozinha_terreo" />
-                <Picker.Item label="Almoxarifado" value="almoxarifado" />
+
+                {locais.map((localizacaoMap) => {
+                  return (
+                    <Picker.Item
+                      label={`${localizacaoMap.localizacaoNome} - ${localizacaoMap.andar}`}
+                      value={`${localizacaoMap.localizacaoId}`}
+                      color="#A0A0A0"
+                    />
+                  )
+                })}
+
               </Picker>
             </View>
           </View>
@@ -80,6 +93,8 @@ export default function CadastroOs() {
               multiline
               numberOfLines={4}
               textAlignVertical="top"
+              onChangeText={setDescricao}
+              value={descricao}
             />
           </View>
           <View style={styles.inputGroup}>
@@ -93,7 +108,7 @@ export default function CadastroOs() {
           </View>
         </ScrollView>
         {/* Botão de Ação */}
-        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={cadOs.cadastrarOS()}>
           <Text style={styles.buttonText}>Abrir Ordem de Serviço</Text>
         </TouchableOpacity>
       </View>
