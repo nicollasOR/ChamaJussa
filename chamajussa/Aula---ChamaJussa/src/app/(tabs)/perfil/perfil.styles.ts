@@ -41,6 +41,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E0E0E0',
     marginBottom: 20,
   },
+
+  avatarText: {
+    fontSize: 18
+  },
   userName: {
     fontSize: 20,
     fontWeight: 'bold',

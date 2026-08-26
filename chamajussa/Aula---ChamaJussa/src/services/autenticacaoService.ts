@@ -10,7 +10,7 @@ export const autenticacaoService = {
         const {data} = await api.post<LoginResponse>("Auth/login", dados);
         if(data.token){
             //token -> "localstorage" (só que no react native)
-            await AsyncStorage.setItem(process.env.EXPO_PUBLIC_TOKEN_KEY, data.token)
+            await AsyncStorage.setItem(process.env.EXPO_PUBLIC_TOKEN_KEY || "ChaveToken", data.token)
         }
         return data;
     },

@@ -5,10 +5,13 @@ import Footer from "../../../components/footer/Footer";
 import CardOs from "../../../components/cardOs";
 import { useOrdemServico } from "../../../hooks/useOrdemServico";
 import { OrdemServico } from "../../../@types";
+import { useState } from "react";
+import { useAutenticacao } from "../../../context/authContext";
 
 export default function ListaOs() {
 
-  const os = useOrdemServico();
+  const {os} = useOrdemServico();
+  const {usuario} = useAutenticacao()
   
   return (
     <SafeAreaView style={styles.safearea}>

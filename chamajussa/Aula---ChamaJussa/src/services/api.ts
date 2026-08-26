@@ -22,7 +22,7 @@ api.interceptors.request.use(async (config) =>{
 
     if(token){
         //configurar o Bearer
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token || "ChaveToken"}`;
     }
     
     return config;

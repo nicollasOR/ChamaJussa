@@ -3,6 +3,7 @@ import { Button, ButtonText, Colors, Title, TitleLabel } from "../../constants/t
 import { useRouter } from "expo-router"
 import { useState } from "react";
 import { autenticacaoService } from "../../services/autenticacaoService";
+import { useAuth } from "../../context/authContext";
 
 // export const Login = () => {
 export default function Login() {
@@ -11,6 +12,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
 
   const router = useRouter();
+  const {login} = useAuth()
 
   async function acessar() {
     // alert("teste")
@@ -27,12 +29,13 @@ export default function Login() {
     const senhaDigitado = senha.trim();
 
     if(!emailDigitado || !senhaDigitado ){
-      Alert.alert("Atenção ⚠👀", "Por favor, preencha o e-mail e senha.");
+      Alert.alert("Atenção", "Por favor, preencha o e-mail e senha.");
       return;
     }
 
     try {
-      await autenticacaoService.login({email: emailDigitado, senha: senhaDigitado})
+      // await autenticacaoService.login({email: emailDigitado, senha: senhaDigitado})
+      await login({email: emailDigitado, senha: senhaDigitado})
       router.replace("/listaOs")
     } catch (error) {
       Alert.alert("Erro!🚫❌", "E-mail ou senha inválidos");
