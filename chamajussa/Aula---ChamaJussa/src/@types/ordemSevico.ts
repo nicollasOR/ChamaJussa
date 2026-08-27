@@ -22,7 +22,10 @@ export interface OrdemServico{
 export interface CriarOrdemServico
 {
     nomeItem: string,
-    localizacaoId: number,
+    localizacaoId: number | string,
     descricao: string,
     imagem: ImagemUpload | null
+    //
+    // ,
+    // filaId: number,
 }

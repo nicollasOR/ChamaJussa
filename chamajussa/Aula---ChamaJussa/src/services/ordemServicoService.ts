@@ -49,4 +49,4 @@ export const ordemServicoService = {
 }
 
 
-export const today = ordemServicoService.cadastrar
+// export const today = ordemServicoService.cadastrar

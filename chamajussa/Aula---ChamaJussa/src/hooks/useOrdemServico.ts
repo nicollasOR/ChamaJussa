@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CriarOrdemServico, OrdemServico } from "../@types";
 import { ordemServicoService } from "../services/ordemServicoService";
 import { Alert } from "react-native";
+import { useFocusEffect } from "expo-router";
 
 export function useOrdemServico(){
     const [os, setOs] = useState<OrdemServico[]>([]);
@@ -34,5 +35,5 @@ export function useOrdemServico(){
         
     }, [])
 
-    return {os, cadastrarOS};
+    return {os, cadastrarOS, listarOs};
 }
